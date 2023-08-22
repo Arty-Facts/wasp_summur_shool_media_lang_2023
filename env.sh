@@ -21,9 +21,10 @@ if [[ ! -d "tortoise-tts" ]]; then
 fi
 __banner Installing tortoise-tts...
 
+./venv/bin/pip install -r tortoise-tts/requirements.txt
+
 cd tortoise-tts; ./venv/bin/pip install .; cd ..
 
-./venv/bin/pip install -r tortoise-tts/requirements.txt
 
 __banner Instaling base packages... 
 ./venv/bin/pip install -e .

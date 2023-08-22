@@ -1,0 +1,125 @@
+ Can you create a funny Sketch for Big Bang Theory using Sheldon Amy Leonard and Penny visiting this event:
+
+ this should be a funny sketch  here are some things to make fun of:
+
+  when presented with previous years submissions for the project Sheldon is very unimpressed by the results and he  argue that the wasp   money should be spent on his research instead
+
+ Nvidia made the presentation of their new gpus and of their new Cloud solution Leonard makes fun of it by saying that's how they solve the problem of it works on my system by making sure that everybody uses their system because Leonard is always trouble with the nvidia the drivers
+
+ Amy tries to find the positive aspects of the summer school but Sheldon Acts childish and doesn't want to collaborate with others when creating the project
+
+ gets frustrated because none of the deep learning and generative models are grounded in true facts in theory but everything is just stochastic exploration  for experimentalists.  
+
+WARA Media & Language welcomes you to an exciting week of Summer School!
+
+
+The format will be a combination of invited lectures from WASP researchers, industry experts and  hands-on experience of central technologies.
+
+During the week you will not only learn about, but also interact and experiment with, modern generative models of human behavior. This includes generative language models, text-to-speech systems, and gesture generation. Outside of the lectures, students work in groups to use the above technologies to create a short story told by 3D avatars. The week is wrapped up by presentations of these assignments in the 3D dome at the Visualization Center.
+
+Examples of last year’s student work can be found below:
+
+Team 1
+
+Team2 
+
+Team 3
+
+Team 4
+
+The social program includes a welcome reception, an excursion, a pitch event and a conference dinner. There will be plenty of networking opportunities with fellow students and the larger WASP community.
+
+ 
+
+Agenda
+Monday August 21 “Inspiration”
+
+10:15 Registration – Entrance of the Visualization Center
+
+10:30 Ivana von Proschwitz (WARA M&L ) – Welcome & practical information
+11:00 Taras Kucherenko (SEED – Electronic arts) – Animation of gestures and body language
+11:30 Sara Karimi (King/ KTH) – How Large Language Models have inspired Game AI
+12:00 Lunch
+13:00 Zenodia Charpy (NVIDIA) – Multi model technologies
+13:30 Guy Gadney (Charisma AI) – Non-linear storytelling
+14:00 Konrad Tollmar (SEED – Electronic arts) Computer-games for research on human communication
+14:30 Coffee break
+15:00 Ben Watson (NVIDIA) Performing Large Language Model inference in the cloud
+
+15:30 Teodor Nikolov & Mihail Tsakov (WARA M&L)– Technical presentation of the assignment
+
+18:00 Avatar Crash Course with Softserve + food and drinks
+
+ 
+
+Tuesday August 22 “Natural language and meaning”
+
+9:00 Jackie Cheung (Mila – Quebec AI Institute) Language models LLM
+10:45 Coffee break
+11:00 Henrik Björklund (Umeå University)  – Bias management and fairness                                         
+
+12:00 Lunch
+13:00 Marcus Liwicki (Luleå University) – Current limitations and future of large language models
+14:00 work on the assignment
+15:00 Coffee break
+15:00 work on the assignment
+16:00 Anders Ynnerman (WASP) – A walk in Space in 3D
+
+17:30 wraps + drinks
+18:00-19:00 3D film viewing Making Magic
+
+ 
+
+Wednesday August 23 “Spoken and nonverbal communication”
+
+9:00 Shivam Mehta – (KTH) Challenges and solutions in text-to-speech
+10:00 Coffee break
+10:15 Shivam Mehta (KTH) continued
+12:00 Lunch
+13:00 Taras Kucherenko (SEED – Electronic arts) – Generation of body animations
+14:00 Coffee break
+14:20 Taras Kucherenko (SEED – Electronic arts) -Tutorial on mapping speech to gestures
+16:00 work on the assignment
+
+19:00 Conference Dinner at VY
+
+ 
+
+Thursday August 24  “Assignment and excursion”
+
+09:00 work on the assignment
+10:00 work on the assignment
+11:00 work on the assignment
+12:00 Lunch
+13: 30 Excursion to Marmorbruket
+
+19:00 Dragons’ Den with Navigare Ventures + food and drinks
+
+ 
+
+Friday August 25 “Demo Day”
+
+9:00 Demo of the assignment in the Visualization Dome
+12:00 Lunch
+13:00 End-of-summer-school
+
+Don´t forget to book your own travel and accommodation for the week.
+
+The WARA M&L team will stay at ELITE GRAND HOTEL, NORRKÖPING
+
+ 
+
+Hope to see you there!
+
+can you present it in json format 
+
+[
+  {
+    "scenario": "...",
+    "dialogue": [
+      {
+        "character": "Sheldon",
+        "line": "..."
+      },
+      {
+        "character": "Amy",

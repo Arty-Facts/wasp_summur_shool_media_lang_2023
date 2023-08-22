@@ -1,0 +1,100 @@
+[
+    {
+      "scenario": "Sheldon, Amy, Leonard, and Penny arrive at the WARA Media & Language Summer School for the first day of events.",
+      "dialogue": [
+        {
+          "character": "Sheldon",
+          "line": "Amy, I still can't understand why we're wasting our time at a 'Summer School.' My intelligence is hardly seasonal."
+        },
+        {
+          "character": "Amy",
+          "line": "Sheldon, it's a great opportunity to learn something new, and collaborate with others."
+        },
+        {
+          "character": "Sheldon",
+          "line": "Collaborate? That's just a fancy term for intellectual mooching."
+        }
+      ]
+    },
+    {
+      "scenario": "The group is shown examples of last year's student projects.",
+      "dialogue": [
+        {
+          "character": "Sheldon",
+          "line": "This is preposterous! This money should be funneled into real research. Like mine."
+        },
+        {
+          "character": "Amy",
+          "line": "Try to find the positive aspects, Sheldon. Maybe you'll even enjoy creating a short story with 3D avatars."
+        },
+        {
+          "character": "Sheldon",
+          "line": "Enjoy? I'd sooner enjoy a root canal."
+        }
+      ]
+    },
+    {
+      "scenario": "Zenodia Charpy from NVIDIA is presenting about Multi-model technologies.",
+      "dialogue": [
+        {
+          "character": "Leonard",
+          "line": "Ah, NVIDIA, solving the age-old problem of 'it works on my system' by making sure everyone's using their system."
+        },
+        {
+          "character": "Penny",
+          "line": "So, what you're saying is, it's like making everyone drink the Kool-Aid?"
+        },
+        {
+          "character": "Leonard",
+          "line": "Exactly! Except the Kool-Aid is always missing a driver update."
+        }
+      ]
+    },
+    {
+      "scenario": "Sheldon gets frustrated during Marcus Liwicki's talk on the current limitations and future of large language models.",
+      "dialogue": [
+        {
+          "character": "Sheldon",
+          "line": "Stochastic exploration? Why don't we just call it what it is: intellectual anarchy!"
+        },
+        {
+          "character": "Amy",
+          "line": "Sheldon, it's just a different approach to research."
+        },
+        {
+          "character": "Sheldon",
+          "line": "Well, in that case, why don't we just throw darts at a board to decide our research topics?"
+        }
+      ]
+    },
+    {
+      "scenario": "The group is working on their assignment to create a short story with 3D avatars.",
+      "dialogue": [
+        {
+          "character": "Amy",
+          "line": "Sheldon, can you please work with us on the storyline?"
+        },
+        {
+          "character": "Sheldon",
+          "line": "I work alone. Think of me as the Batman of theoretical physics."
+        },
+        {
+          "character": "Penny",
+          "line": "Does that make Amy your Robin?"
+        },
+        {
+          "character": "Sheldon",
+          "line": "More like Alfred. She manages the chaos."
+        },
+        {
+          "character": "Amy",
+          "line": "Well, Alfred is pretty essential to Batman."
+        },
+        {
+          "character": "Sheldon",
+          "line": "Fine, I'll collaborate, but only because Alfred makes a mean cup of tea."
+        }
+      ]
+    }
+  ]
+  

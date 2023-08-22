@@ -12,3 +12,5 @@ htmlcov
 .tox
 .pytest_cache
 tortoise-tts
+results/
+*.json

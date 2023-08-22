@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 
 [project]
-name = "project"
+name = "story"
 version = "0.0.0"
 authors = [
     {name = "Arturas Aleksandraus", email = "arturas@aleksandraus.se"},
@@ -38,8 +38,9 @@ dependencies = [
     "tox",
     "gdown",
     "pytest",
+    "gdown",
 ]
 
 [tool.setuptools]
-packages = ["project"]
+packages = ["story"]
 

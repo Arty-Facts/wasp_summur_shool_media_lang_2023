@@ -1,0 +1,14 @@
+.ipynb_checkpoints/
+venv
+tmp
+data
+.vscode
+__pycache__
+*.egg-info/
+build
+.eggs
+htmlcov
+.coverage
+.tox
+.pytest_cache
+tortoise-tts

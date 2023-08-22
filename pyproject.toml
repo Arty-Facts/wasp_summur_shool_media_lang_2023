@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "project"
+version = "0.0.0"
+authors = [
+    {name = "Arturas Aleksandraus", email = "arturas@aleksandraus.se"},
+]
+description = "Wasp Summer Project"
+readme = "README.md"
+requires-python = ">=3.7"
+license = { text = "MIT" }
+keywords = ["ML", "PyTorch", "TTD", "research"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "ipykernel",
+    "ipympl",
+    "ipywidgets",
+    "jupyter",
+    "matplotlib",
+    "notebook",
+    "numpy",
+    "scipy",
+    "tqdm",
+    "torch",
+    "torchvision",
+    "tox",
+    "gdown",
+    "pytest",
+]
+
+[tool.setuptools]
+packages = ["project"]
+

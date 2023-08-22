@@ -2,20 +2,29 @@
 
  this should be a funny sketch  here are some things to make fun of:
 
-  when presented with previous years submissions for the project Sheldon is very unimpressed by the results and he  argue that the wasp   money should be spent on his research instead
+  when presented with previous years submissions for the project Sheldon 
+  is very unimpressed by the results and he  argue that the wasp   money should be spent on his research instead
 
- Nvidia made the presentation of their new gpus and of their new Cloud solution Leonard makes fun of it by saying that's how they solve the problem of it works on my system by making sure that everybody uses their system because Leonard is always trouble with the nvidia the drivers
+ Nvidia made the presentation of their new gpus and of their new Cloud solution 
+ Leonard makes fun of it by saying that's how they solve the problem of it works 
+ on my system by making sure that everybody uses their system because Leonard is always trouble with the nvidia the drivers
 
- Amy tries to find the positive aspects of the summer school but Sheldon Acts childish and doesn't want to collaborate with others when creating the project
+ Amy tries to find the positive aspects of the summer school but Sheldon Acts childish and
+  doesn't want to collaborate with others when creating the project
 
- gets frustrated because none of the deep learning and generative models are grounded in true facts in theory but everything is just stochastic exploration  for experimentalists.  
+ gets frustrated because none of the deep learning and generative models are grounded 
+ in true facts in theory but everything is just stochastic exploration  for experimentalists.  
 
 WARA Media & Language welcomes you to an exciting week of Summer School!
 
 
-The format will be a combination of invited lectures from WASP researchers, industry experts and  hands-on experience of central technologies.
+The format will be a combination of invited lectures from WASP researchers, industry experts and  
+hands-on experience of central technologies.
 
-During the week you will not only learn about, but also interact and experiment with, modern generative models of human behavior. This includes generative language models, text-to-speech systems, and gesture generation. Outside of the lectures, students work in groups to use the above technologies to create a short story told by 3D avatars. The week is wrapped up by presentations of these assignments in the 3D dome at the Visualization Center.
+During the week you will not only learn about, but also interact and experiment with, modern generative
+ models of human behavior. This includes generative language models, text-to-speech systems, and gesture generation. 
+ Outside of the lectures, students work in groups to use the above technologies to create a short story told by 
+ 3D avatars. The week is wrapped up by presentations of these assignments in the 3D dome at the Visualization Center.
 
 Examples of last year’s student work can be found below:
 
@@ -111,6 +120,9 @@ The WARA M&L team will stay at ELITE GRAND HOTEL, NORRKÖPING
 
 Hope to see you there!
 
+encode a sentiment for each line chose from:
+Agreement, Angry, Disagreement, Distracted, Flirty, Happy, Laughing, Neutral, Old, Pensive, Relaxed, Sad, Sarcastic, Scared, Sneaky, Speech, Still, Threatening, Tired 
+
 can you present it in json format 
 
 [
@@ -119,6 +131,7 @@ can you present it in json format
     "dialogue": [
       {
         "character": "Sheldon",
+        "sentiment": "...",
         "line": "..."
       },
       {

@@ -53,7 +53,7 @@ def text_to_speech(text,
         if len(clip_paths) == 0:
             raise Exception(f"Voice {name} not found")
         for clip_path in clip_paths:
-            voice_samples.append(load_audio(clip_path, 22050))
+            voice_samples.append(load_audio(clip_path, 24000))
 
 
     gen, dbg_state = tts.tts_with_preset(text, k=1, voice_samples=voice_samples,
@@ -75,7 +75,8 @@ def parse_story(story_path, good_as="freeman"):
         index += 1
         for dialog in scenario["dialogue"]:
             character = dialog["character"].lower()
-            line = dialog["line"]
-            timeline.append((index, character, line))
+            sentiment = dialog["sentiment"]
+            text = dialog["line"]
+            timeline.append((index, character, sentiment,  text))
             index += 1
     return timeline

@@ -41,7 +41,7 @@ def main():
     logging.info(f"Story has {len(the_story)} parts.")
     try:
         for index, voice, sentiment, text in the_story:
-            logging.info(f"Dialog {index}/{len(the_story)}")
+            logging.info(f"Dialog {index}/{len(the_story)} time passed: {int(time.time() - start)/60} min {int(time.time() - start)%60} seconds.")
             worker = Worker(index, voice, sentiment, text, preset=args.preset, output_path=args.output_path)
             worker()
             all_workers.append(worker)

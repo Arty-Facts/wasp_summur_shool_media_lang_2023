@@ -102,15 +102,16 @@ def load_content(content):
     elif isinstance(content, Path):
         return content.name, content.read_bytes()
     else:
-        raise Exception("Unknown content type")
+        raise Exception(f"Unknown content type {type(content)}")
     
 def critical_log(response):
-    logging.critical('Failed to make request')
-    logging.critical(f'Status code: {response.status_code}')
-    logging.critical(f'Response: {response.text}')
+    logger = logging.getLogger("story_error")
+    logger.critical('Failed to make request')
+    logger.critical(f'Status code: {response.status_code}')
+    logger.critical(f'Response: {response.text}')
     
 def dispatch_generate_bvh(
-        audio,
+        wav,
         style="Neutral", 
         base_url='http://129.192.81.237', 
         seed=1337,
@@ -121,7 +122,7 @@ def dispatch_generate_bvh(
     url = f'{base_url}/generate_bvh/'
 
     # Prepare the multipart/form-data payload
-    name, data = load_content(audio)
+    name, data = load_content(wav)
 
     assert style in  ["Agreement", "Angry", "Disagreement", "Distracted", "Flirty", "Happy", "Laughing", "Neutral", "Old", "Pensive", "Relaxed", "Sad", "Sarcastic", "Scared", "Sneaky", "Speech", "Still", "Threatening", "Tired"]
     # todo validate pose
@@ -170,7 +171,7 @@ def dispatch_generate_fbx(
 
 def dispatch_generate_mp4(
         bvh,
-        audio,
+        wav,
         base_url='http://129.192.81.237', 
     ):
     # The URL to make the POST request to
@@ -179,12 +180,12 @@ def dispatch_generate_mp4(
     # Prepare the multipart/form-data payload
 
     name_bvh, data_bvh = load_content(bvh)
-    name_audio, data_audio = load_content(audio)
+    name_wav, data_wav = load_content(wav)
 
 
     files = {
         'motion': (name_bvh, data_bvh,  'application/octet-stream'),
-        'audio': (name_audio, data_audio,  'audio/wav'),
+        'audio': (name_wav, data_wav, 'audio/wav'),
     }
 
     # Make the POST request
@@ -234,50 +235,63 @@ def wait_and_get(job_id, base_url='http://129.192.81.237', ):
 
 
 class Worker:
-    def __init__(self, index, voice, sentiment, text, **kvargs):
+    def __init__(self, index, voice, sentiment, text, output_path,logger=None, **kvargs):
         self.index = index
         self.voice = voice
         self.sentiment = sentiment
         self.text = text
-        self.audio = None
+        self.wav = None
         self.bvh = None
         self.fbx = None
         self.mp4 = None
         self.state = "NOT_STARTED"
         self.error = None
         self.worker = None
+        self.output_path = output_path
         self.kvargs = kvargs
+        if logger is None:
+            self.logger = logging
+        else:
+            self.logger = logger
 
-    def dispatch(self, audio):
+    def dispatch(self, wav):
         try:
             self.state = "RUNNING"
-            bvh_id = dispatch_generate_bvh(audio, style=self.sentiment)
-            logging.info(f"index {self.index} - bvh_id {bvh_id}")
+            bvh_id = dispatch_generate_bvh(wav, style=self.sentiment)
+            self.logger.info(f"index {self.index} - bvh_id {bvh_id}")
             self.bvh = wait_and_get(bvh_id)
-            logging.info(f"index {self.index} - bvh done")
+            self.logger.info(f"index {self.index} - bvh done")
 
             fbx_id = dispatch_generate_fbx(self.bvh)
-            logging.info(f"index {self.index} - fbx_id {fbx_id}")
+            self.logger.info(f"index {self.index} - fbx_id {fbx_id}")
             self.fbx = wait_and_get(fbx_id)
-            logging.info(f"index {self.index} - fbx done")
+            self.logger.info(f"index {self.index} - fbx done")
 
-            mp4_id = dispatch_generate_mp4(self.bvh, self.audio)
-            logging.info(f"index {self.index} - mp4_id {mp4_id}")
+            self.save_fbx(sync=False)
+
+            mp4_id = dispatch_generate_mp4(self.bvh, wav)
+            self.logger.info(f"index {self.index} - mp4_id {mp4_id}")
             self.mp4 = wait_and_get(mp4_id)
-            logging.info(f"index {self.index} - mp4 done")
+            self.logger.info(f"index {self.index} - mp4 done")
 
-            logging.info(f"index {self.index} - done")
+
+            self.logger.info(f"index {self.index} - done")
             self.state = "SUCCESS"
         except Exception as e:
             self.state = "FAILURE"
             self.error = e
+            raise e
 
 
-    def __call__(self, device) -> Any:
+    def __call__(self, device="cuda:0") -> Any:
         try:
-            self.audio, _ = text_to_speech(self.text, self.voice, index=self.index, device=device, **self.kvargs)
-            # do dispatch in a thread
-            self.worker = threading.Thread(target=self.dispatch, args=(self.audio,))
+            self.logger.info(f"index {self.index} - tts")
+            self.wav, wav_path = text_to_speech(self.text, self.voice, index=self.index, device=device, output_path=self.output_path, **self.kvargs)
+            self.logger.info(f"index {self.index} - wav done")
+
+            # self.dispatch(wav_path)
+            # do dispatch to server in a thread
+            self.worker = threading.Thread(target=self.dispatch, args=(wav_path,))
             self.worker.start()
             
         except Exception as e:
@@ -286,21 +300,56 @@ class Worker:
             raise e
         
     def join(self):
-        if self.state == "RUNNING" and self.worker is not None:
-            self.worker.join()
+        if self.worker is not None:
+            try:
+                self.worker.join()
+            except Exception as e:
+                self.logger.error(f"index {self.index} - worker join failed")
 
-    def save_audio(self, path):
-        save_data(self.audio, path)
+    def save_wav(self, sync=True):
+        path = os.path.join(self.output_path, f"{self.index}_{self.voice}.wav")
+        self.logger.info(f"index {self.index} - saving wav")
+        if sync:
+            self.join()
+        torchaudio.save(path, self.wav, 24000)
+        return path
 
-    def save_bvh(self, path):
-        self.join()
+    def save_bvh(self, sync=True):
+        path = os.path.join(self.output_path, f"{self.index}_{self.voice}.bvh")
+        self.logger.info(f"index {self.index} - saving bvh")
+        if sync:
+            self.join()
         save_data(self.bvh, path)
+        return path
 
-    def save_fbx(self, path):
-        self.join()
+    def save_fbx(self, sync=True):
+        path = os.path.join(self.output_path, f"{self.index}_{self.voice}.fbx")
+        self.logger.info(f"index {self.index} - saving fbx")
+        if sync:
+            self.join()
         save_data(self.fbx, path)
+        return path
     
-    def save_mp4(self, path):
-        self.join()
+    def save_mp4(self, sync=True):
+        path = os.path.join(self.output_path, f"{self.index}_{self.voice}.mp4")
+        self.logger.info(f"index {self.index} - saving mp4")
+        if sync:
+            self.join()
         save_data(self.mp4, path)
+        return path
+
+    def get_bvh(self):
+        self.join()
+        return self.bvh
+    
+    def get_fbx(self):
+        self.join()
+        return self.fbx
+    
+    def get_mp4(self):
+        self.join()
+        return self.mp4
+    
+    def get_wav(self):
+        return self.wav
 

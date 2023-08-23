@@ -25,11 +25,12 @@ def load_tts(use_deepspeed = True,
             half = True,
             model_dir = MODELS_DIR, 
             load_custom_voices = True, 
-            device = None
+            device = None,
             ):
     if torch.backends.mps.is_available():
         use_deepspeed = False
-    if load_custom_voices:
+    get_data = len(glob.glob("tortoise-tts/tortoise/voices/arty/*")) == 0
+    if get_data and load_custom_voices:
         url = "https://drive.google.com/drive/folders/1wwi2ZiIdvVEYjkTbMpJv09WiIkTpogXh"
         out = "tortoise-tts/tortoise/"
         gdown.download_folder(url, output=out, quiet=False)
@@ -173,7 +174,7 @@ def dispatch_generate_fbx(
 def dispatch_generate_mp4(
         bvh,
         wav,
-        base_url='http://129.192.81.237', 
+        base_url='http://129.192.83.172', 
     ):
     # The URL to make the POST request to
     url = f'{base_url}/visualise/'
@@ -285,13 +286,15 @@ class Worker:
 
             fbx_id = dispatch_generate_fbx(self.bvh)
             self.logger.info(f"index {self.index} - fbx_id {fbx_id}")
+
+            mp4_id = dispatch_generate_mp4(self.bvh, wav)
+            self.logger.info(f"index {self.index} - mp4_id {mp4_id}")
+
             self.fbx = wait_and_get(fbx_id)
             self.logger.info(f"index {self.index} - fbx done")
 
             self.save_fbx(sync=False)
 
-            mp4_id = dispatch_generate_mp4(self.bvh, wav)
-            self.logger.info(f"index {self.index} - mp4_id {mp4_id}")
             self.mp4 = wait_and_get(mp4_id)
             self.logger.info(f"index {self.index} - mp4 done")
 
@@ -309,7 +312,6 @@ class Worker:
             self.logger.info(f"index {self.index} - tts")
             self.wav, wav_path = text_to_speech(self.text, self.voice, index=self.index, device=device, output_path=self.output_path, **self.kvargs)
             self.logger.info(f"index {self.index} - wav done")
-
             # self.dispatch(wav_path)
             # do dispatch to server in a thread
             self.worker = threading.Thread(target=self.dispatch, args=(wav_path,))

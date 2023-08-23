@@ -6,6 +6,13 @@ import os
 import logging
 import tqdm
 import time
+import threading
+import multiprocessing
+from functools import partial
+
+class dummy:
+    def is_alive():
+        return False
 
 def main():
     start = time.time()
@@ -30,6 +37,7 @@ def main():
             worker = Worker(index, voice, sentiment, text, preset=args.preset, output_path=args.output_path)
             worker()
             all_workers.append(worker)
+            time.sleep(1)
     except KeyboardInterrupt:
         print("Keyboard Interrupt, joining all workers.")
         for w in all_workers:

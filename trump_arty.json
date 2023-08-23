@@ -1,0 +1,62 @@
+[
+  {
+    "scenario": "Donald Trump and Arty are sitting in a lecture hall at the WARA Summer School, listening to presentations. The screen shows examples of last year's student work.",
+    "dialogue": [
+      {
+        "character": "Trump",
+        "sentiment": "Disagreement",
+        "line": "I've got to say, this is not impressive. They could be spending this money on something much more tremendous, believe me."
+      },
+      {
+        "character": "Arty",
+        "sentiment": "Neutral",
+        "line": "Well, it's an academic setting. The point is to explore and learn, not necessarily to be 'tremendous'."
+      }
+    ]
+  },
+  {
+    "scenario": "Zenodia Charpy from NVIDIA starts presenting about multi-model technologies.",
+    "dialogue": [
+      {
+        "character": "Arty",
+        "sentiment": "Pensive",
+        "line": "This NVIDIA stuff is pretty cool. They're working on some groundbreaking technology."
+      },
+      {
+        "character": "Trump",
+        "sentiment": "Sarcastic",
+        "line": "Groundbreaking? Maybe for a toy company."
+      }
+    ]
+  },
+  {
+    "scenario": "Announcement about the group project where students will work in groups to create a short story told by 3D avatars.",
+    "dialogue": [
+      {
+        "character": "Arty",
+        "sentiment": "Happy",
+        "line": "The group project seems like a great way to put what we've learned into practice."
+      },
+      {
+        "character": "Trump",
+        "sentiment": "Angry",
+        "line": "A group project? I don't do groups. I lead. Big difference."
+      }
+    ]
+  },
+  {
+    "scenario": "The day wraps up, and everyone is heading out of the lecture hall.",
+    "dialogue": [
+      {
+        "character": "Trump",
+        "sentiment": "Tired",
+        "line": "Well, that was a complete waste of my time."
+      },
+      {
+        "character": "Arty",
+        "sentiment": "Relaxed",
+        "line": "I don't know, I found it to be quite informative. But to each their own, I guess."
+      }
+    ]
+  }
+]

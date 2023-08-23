@@ -1,0 +1,152 @@
+[
+  {
+    "scenario": "At WASP summer school a presentation of previous year's submissions is shown",
+    "dialogue": [
+      {
+        "character": "Sheldon",
+        "sentiment": "Disagreement",
+        "line": "This is appalling! They actually spent research funding on this?"
+      },
+      {
+        "character": "Amy",
+        "sentiment": "Neutral",
+        "line": "Well, they were exploring generative models. Isn't that interesting?"
+      },
+      {
+        "character": "Sheldon",
+        "sentiment": "Angry",
+        "line": "Interesting? The only thing this generates is disdain. That money should've been allocated to my string theory research."
+      },
+      {
+        "character": "Leonard",
+        "sentiment": "Sarcastic",
+        "line": "Oh, because we can't get enough of string theory, can we?"
+      },
+      {
+        "character": "Penny",
+        "sentiment": "Happy",
+        "line": "Look on the bright side, it generated something: your annoyance."
+      }
+    ]
+  },
+  {
+    "scenario": "Nvidia makes a  presentation of their new GPUs and cloud solutions",
+    "dialogue": [
+      {
+        "character": "Leonard",
+        "sentiment": "Sarcastic",
+        "line": "Ah, Nvidia's cloud solutions. That's how they solve the 'It works on my machine' problem—by making everyone use their machine!"
+      },
+      {
+        "character": "Sheldon",
+        "sentiment": "Pensive",
+        "line": "Technically, it's not their machine; it's a rented space on their machine."
+      },
+      {
+        "character": "Penny",
+        "sentiment": "Laughing",
+        "line": "And yet, you still can't get their drivers to work, huh Leonard?"
+      },
+      {
+        "character": "Amy",
+        "sentiment": "Happy",
+        "line": "I'm just excited for the generative models. Imagine the possibilities!"
+      },
+      {
+        "character": "Sheldon",
+        "sentiment": "Disagreement",
+        "line": "You mean the stochastic nonsense?"
+      }
+    ]
+  },
+  {
+    "scenario": "In the hallway, on the way to the cafeteria",
+    "dialogue": [
+      {
+        "character": "Amy",
+        "sentiment": "Happy",
+        "line": "Isn't this summer school great? Look at all these people eager to learn and collaborate!"
+      },
+      {
+        "character": "Sheldon",
+        "sentiment": "Angry",
+        "line": "Collaborate? I came here to win, not make friends."
+      },
+      {
+        "character": "Leonard",
+        "sentiment": "Relaxed",
+        "line": "Sheldon, it's not a competition."
+      },
+      {
+        "character": "Penny",
+        "sentiment": "Laughing",
+        "line": "Well, to be fair, everything is a competition to Sheldon."
+      },
+      {
+        "character": "Amy",
+        "sentiment": "Pensive",
+        "line": "You could still learn something, Sheldon."
+      }
+    ]
+  },
+  {
+    "scenario": "A fue minutes later in the cafeteria",
+    "dialogue": [
+      {
+        "character": "Sheldon",
+        "sentiment": "Angry",
+        "line": "It's just stochastic exploration! Where's the grounding in facts and theory?"
+      },
+      {
+        "character": "Amy",
+        "sentiment": "Neutral",
+        "line": "Sometimes experimentation leads to discovery, Sheldon."
+      },
+      {
+        "character": "Leonard",
+        "sentiment": "Sarcastic",
+        "line": "Yeah, remember, even Einstein had his 'thought experiments.'"
+      },
+      {
+        "character": "Penny",
+        "sentiment": "Laughing",
+        "line": "Thought experiments? Is that what we're calling daydreaming now?"
+      },
+      {
+        "character": "Sheldon",
+        "sentiment": "Disagreement",
+        "line": "Ugh, you people are impossible."
+      }
+    ]
+  },
+  {
+    "scenario": "During the final presentation",
+    "dialogue": [
+      {
+        "character": "Sheldon",
+        "sentiment": "Speech",
+        "line": "Ladies and gentlemen, though the organizers lack the wisdom to declare a winner, let me clarify: My submission was obviously superior."
+      },
+      {
+        "character": "Amy",
+        "sentiment": "Relaxed",
+        "line": "Well, it's not about winning, Sheldon."
+      },
+      {
+        "character": "Leonard",
+        "sentiment": "Laughing",
+        "line": "That's Sheldon's version of a participation trophy."
+      },
+      {
+        "character": "Penny",
+        "sentiment": "Happy",
+        "line": "You're all winners in my book!"
+      },
+      {
+        "character": "Sheldon",
+        "sentiment": "Angry",
+        "line": "That's exactly the kind of empty platitude that's wrong with this system!"
+      }
+    ]
+  }
+]

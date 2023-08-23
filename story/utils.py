@@ -67,7 +67,7 @@ def text_to_speech(text,
                    cvvp_amount=0.0, 
                    use_deepspeed=False,
                    kv_cache=True,
-                   half=False,
+                   half=True,
                    model_dir=MODELS_DIR, 
                    load_custom_voices=True,
                    device=None
@@ -398,24 +398,25 @@ class Worker:
         return self.wav
 
 
-def zip_story(path, exts, alias=None):
+def zip_story(path, exts, name="story", alias=None):
     # List of files to be included in the ZIP archive
     files = []
     for ext in exts:
         files.extend(glob.glob(f"{path}/*.{ext}"))
 
     # Name of the output ZIP file
-    output_zip = f'{path}/story.zip'
+    output_zip = f'{path}/{name}.zip'
 
     # Open the output ZIP file in write mode
     with zipfile.ZipFile(output_zip, 'w') as zipf:
         for original_file in files:
             # Add each file to the ZIP archive with a new name
             name = Path(original_file).stem.split('_')[-1]
-            new_file = original_file
+            new_file = Path(original_file).name
             if alias is not None:
                 if name in alias:
-                    new_file = original_file.replace(name, alias[name])
+                    new_file = Path(original_file.replace(name, alias[name])).name
+            print(f"Adding {original_file} as {new_file}")
             zipf.write(original_file, arcname=new_file)
 
     print(f'ZIP archive "{output_zip}" created successfully.')

@@ -12,9 +12,8 @@ htmlcov
 .tox
 .pytest_cache
 tortoise-tts
-results/
-*.json
 *.log
 *.mp4
 *.fbx
 *.wav
+*.zip

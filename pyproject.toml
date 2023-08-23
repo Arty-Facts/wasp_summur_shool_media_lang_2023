@@ -41,6 +41,9 @@ dependencies = [
     "gdown",
 ]
 
+[project.scripts]
+story = "story.__main__:main"
+
 [tool.setuptools]
 packages = ["story"]
 

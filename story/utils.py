@@ -1,3 +1,4 @@
+from typing import Any
 import torch 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -8,6 +9,9 @@ from functools import cache
 import glob, json
 import requests
 from pathlib import Path
+import time
+import threading
+import logging
 
 from tortoise.api import TextToSpeech, MODELS_DIR
 from tortoise.utils.audio import load_voices, load_audio
@@ -99,7 +103,12 @@ def load_content(content):
         return content.name, content.read_bytes()
     else:
         raise Exception("Unknown content type")
-
+    
+def critical_log(response):
+    logging.critical('Failed to make request')
+    logging.critical(f'Status code: {response.status_code}')
+    logging.critical(f'Response: {response.text}')
+    
 def dispatch_generate_bvh(
         audio,
         style="Neutral", 
@@ -132,9 +141,7 @@ def dispatch_generate_bvh(
 
     # Check the status code and print the response
     if response.status_code != 202:
-        print('Failed to make request')
-        print('Status code:', response.status_code)
-        print('Response:', response.text)
+        critical_log(response)
         raise Exception("Failed to make request")
     return response.json()
 
@@ -157,9 +164,7 @@ def dispatch_generate_fbx(
 
     # Check the status code and print the response
     if response.status_code != 202:
-        print('Failed to make request')
-        print('Status code:', response.status_code)
-        print('Response:', response.text)
+        critical_log(response)
         raise Exception("Failed to make request")
     return response.json()
 
@@ -187,9 +192,7 @@ def dispatch_generate_mp4(
 
     # Check the status code and print the response
     if response.status_code != 202:
-        print('Failed to make request')
-        print('Status code:', response.status_code)
-        print('Response:', response.text)
+        critical_log(response)
         raise Exception("Failed to make request")
     return response.json()
 
@@ -204,9 +207,7 @@ def job_done(
         obj = response.json()
         state = obj["state"]
     else:
-        print('Failed to make request')
-        print('Status code:', response.status_code)
-        print('Response:', response.text)
+        critical_log(response)
         raise Exception("Failed to make request")
     return state == "SUCCESS"
 
@@ -217,12 +218,89 @@ def get_data(
     url = f'{base_url}/get_files/{job_id}/'
     response = requests.get(url)
     if response.status_code != 200:
-        print('Failed to make request')
-        print('Status code:', response.status_code)
-        print('Response:', response.text)
+        critical_log(response)
         raise Exception("Failed to make request")    
     return response.content
 
 def save_data(data, path):
     with open(path, 'wb') as f:
         f.write(data)
+
+def wait_and_get(job_id, base_url='http://129.192.81.237', ):
+    while not job_done(job_id, base_url=base_url):
+        time.sleep(1)
+    return get_data(job_id, base_url=base_url)
+
+
+
+class Worker:
+    def __init__(self, index, voice, sentiment, text, **kvargs):
+        self.index = index
+        self.voice = voice
+        self.sentiment = sentiment
+        self.text = text
+        self.audio = None
+        self.bvh = None
+        self.fbx = None
+        self.mp4 = None
+        self.state = "NOT_STARTED"
+        self.error = None
+        self.worker = None
+        self.kvargs = kvargs
+
+    def dispatch(self, audio):
+        try:
+            self.state = "RUNNING"
+            bvh_id = dispatch_generate_bvh(audio, style=self.sentiment)
+            logging.info(f"index {self.index} - bvh_id {bvh_id}")
+            self.bvh = wait_and_get(bvh_id)
+            logging.info(f"index {self.index} - bvh done")
+
+            fbx_id = dispatch_generate_fbx(self.bvh)
+            logging.info(f"index {self.index} - fbx_id {fbx_id}")
+            self.fbx = wait_and_get(fbx_id)
+            logging.info(f"index {self.index} - fbx done")
+
+            mp4_id = dispatch_generate_mp4(self.bvh, self.audio)
+            logging.info(f"index {self.index} - mp4_id {mp4_id}")
+            self.mp4 = wait_and_get(mp4_id)
+            logging.info(f"index {self.index} - mp4 done")
+
+            logging.info(f"index {self.index} - done")
+            self.state = "SUCCESS"
+        except Exception as e:
+            self.state = "FAILURE"
+            self.error = e
+
+
+    def __call__(self, device) -> Any:
+        try:
+            self.audio, _ = text_to_speech(self.text, self.voice, index=self.index, device=device, **self.kvargs)
+            # do dispatch in a thread
+            self.worker = threading.Thread(target=self.dispatch, args=(self.audio,))
+            self.worker.start()
+            
+        except Exception as e:
+            self.state = "FAILURE"
+            self.error = e
+            raise e
+        
+    def join(self):
+        if self.state == "RUNNING" and self.worker is not None:
+            self.worker.join()
+
+    def save_audio(self, path):
+        save_data(self.audio, path)
+
+    def save_bvh(self, path):
+        self.join()
+        save_data(self.bvh, path)
+
+    def save_fbx(self, path):
+        self.join()
+        save_data(self.fbx, path)
+    
+    def save_mp4(self, path):
+        self.join()
+        save_data(self.mp4, path)
+

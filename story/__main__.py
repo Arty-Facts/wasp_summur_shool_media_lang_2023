@@ -16,13 +16,6 @@ class dummy:
         return False
 
 def main():
-    start = time.time()
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    file_handler = logging.FileHandler("story.log")
-    file_handler.setFormatter(formatter)
-    file_handler.setLevel(logging.INFO)
-    logging.basicConfig(level=logging.INFO, handlers=[file_handler])
-    logging.info("Starting story generation.")
     parser = argparse.ArgumentParser()
     parser.add_argument('--file', type=str, help='path to story json file', default="story.json")
     parser.add_argument('--output_path', type=str, help='path to output folder', default="results/")
@@ -37,6 +30,13 @@ def main():
     #copy file to output folder
     os.makedirs(args.output_path, exist_ok=True)
     shutil.copy(args.file, args.output_path)
+    start = time.time()
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    file_handler = logging.FileHandler(f"{args.output_path}/{args.output_name}.log")
+    file_handler.setFormatter(formatter)
+    file_handler.setLevel(logging.INFO)
+    logging.basicConfig(level=logging.INFO, handlers=[file_handler])
+    logging.info("Starting story generation.")
 
     logging.info(f"Story has {len(the_story)} parts.")
     try:

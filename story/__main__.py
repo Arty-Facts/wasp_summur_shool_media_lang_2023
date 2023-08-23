@@ -9,6 +9,7 @@ import time
 import threading
 import multiprocessing
 from functools import partial
+import shutil
 
 class dummy:
     def is_alive():
@@ -32,6 +33,11 @@ def main():
     all_workers = []
     # if ctl+c is pressed, join all workers
     the_story = parse_story(args.file)
+
+    #copy file to output folder
+    os.makedirs(args.output_path, exist_ok=True)
+    shutil.copy(args.file, args.output_path)
+
     logging.info(f"Story has {len(the_story)} parts.")
     try:
         for index, voice, sentiment, text in the_story:

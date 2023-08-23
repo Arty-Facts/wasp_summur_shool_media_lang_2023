@@ -118,7 +118,7 @@ def dispatch_generate_bvh(
         base_url='http://129.192.81.237', 
         seed=1337,
         temperature=0.9,
-        pose="pose_0",
+        pose="pose_14",
     ):
     # The URL to make the POST request to
     url = f'{base_url}/generate_bvh/'
@@ -174,7 +174,7 @@ def dispatch_generate_fbx(
 def dispatch_generate_mp4(
         bvh,
         wav,
-        base_url='http://129.192.83.172', 
+        base_url='http://129.192.81.237', 
     ):
     # The URL to make the POST request to
     url = f'{base_url}/visualise/'

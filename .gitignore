@@ -15,3 +15,6 @@ tortoise-tts
 results/
 *.json
 *.log
+*.mp4
+*.fbx
+*.wav

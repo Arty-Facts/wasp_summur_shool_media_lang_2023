@@ -16,6 +16,7 @@ import logging
 from tortoise.api import TextToSpeech, MODELS_DIR
 from tortoise.utils.audio import load_voices, load_audio
 import gdown
+from moviepy.editor import VideoFileClip, concatenate_videoclips
 
 
 @cache
@@ -232,6 +233,22 @@ def wait_and_get(job_id, base_url='http://129.192.81.237', ):
         time.sleep(1)
     return get_data(job_id, base_url=base_url)
 
+def combine_mp4s(mp4s, output_path, output_name="story"):
+    # Load each video clip
+    video_clips = [VideoFileClip(file) for file in mp4s]
+
+    # Concatenate the video clips
+    final_clip = concatenate_videoclips(video_clips)
+
+    # Write the concatenated clip to an output file
+    output_file = 'output.mp4'
+    path = os.path.join(output_path, f"{output_name}.mp4")
+    final_clip.write_videofile(path, codec='libx264')
+    # Close the video clips
+    for clip in video_clips:
+        clip.close()
+    return path
+
 
 
 class Worker:
@@ -244,6 +261,10 @@ class Worker:
         self.bvh = None
         self.fbx = None
         self.mp4 = None
+        self.wav_path = None
+        self.bvh_path = None
+        self.fbx_path = None
+        self.mp4_path = None
         self.state = "NOT_STARTED"
         self.error = None
         self.worker = None
@@ -307,36 +328,36 @@ class Worker:
                 self.logger.error(f"index {self.index} - worker join failed")
 
     def save_wav(self, sync=True):
-        path = os.path.join(self.output_path, f"{self.index}_{self.voice}.wav")
+        self.wav_path = os.path.join(self.output_path, f"{self.index}_{self.voice}.wav")
         self.logger.info(f"index {self.index} - saving wav")
         if sync:
             self.join()
-        torchaudio.save(path, self.wav, 24000)
-        return path
+        torchaudio.save(self.wav_path, self.wav, 24000)
+        return self.wav_path
 
     def save_bvh(self, sync=True):
-        path = os.path.join(self.output_path, f"{self.index}_{self.voice}.bvh")
+        self.bvh_path = os.path.join(self.output_path, f"{self.index}_{self.voice}.bvh")
         self.logger.info(f"index {self.index} - saving bvh")
         if sync:
             self.join()
-        save_data(self.bvh, path)
-        return path
+        save_data(self.bvh, self.bvh_path)
+        return self.bvh_path
 
     def save_fbx(self, sync=True):
-        path = os.path.join(self.output_path, f"{self.index}_{self.voice}.fbx")
+        self.fbx_path = os.path.join(self.output_path, f"{self.index}_{self.voice}.fbx")
         self.logger.info(f"index {self.index} - saving fbx")
         if sync:
             self.join()
-        save_data(self.fbx, path)
-        return path
+        save_data(self.fbx, self.fbx_path)
+        return self.fbx_path
     
     def save_mp4(self, sync=True):
-        path = os.path.join(self.output_path, f"{self.index}_{self.voice}.mp4")
+        self.mp4_path = os.path.join(self.output_path, f"{self.index}_{self.voice}.mp4")
         self.logger.info(f"index {self.index} - saving mp4")
         if sync:
             self.join()
-        save_data(self.mp4, path)
-        return path
+        save_data(self.mp4, self.mp4_path)
+        return self.mp4_path
 
     def get_bvh(self):
         self.join()

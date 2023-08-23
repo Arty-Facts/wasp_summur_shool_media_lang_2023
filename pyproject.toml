@@ -39,6 +39,7 @@ dependencies = [
     "gdown",
     "pytest",
     "gdown",
+    "moviepy",
 ]
 
 [project.scripts]

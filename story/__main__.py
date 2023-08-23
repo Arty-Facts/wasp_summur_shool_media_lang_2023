@@ -31,9 +31,11 @@ def main():
     args = parser.parse_args()
     all_workers = []
     # if ctl+c is pressed, join all workers
-
+    the_story = parse_story(args.file)
+    logging.info(f"Story has {len(the_story)} parts.")
     try:
-        for index, voice, sentiment, text in parse_story(args.file):
+        for index, voice, sentiment, text in the_story:
+            logging.info(f"Dialog {index}/{len(the_story)}")
             worker = Worker(index, voice, sentiment, text, preset=args.preset, output_path=args.output_path)
             worker()
             all_workers.append(worker)

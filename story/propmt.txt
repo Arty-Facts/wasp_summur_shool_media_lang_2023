@@ -1,24 +1,22 @@
- Can you create a funny Sketch for Big Bang Theory using Sheldon Amy Leonard and Penny visiting this event:
+Can you create a funny Sketch for Big Bang Theory using Sheldon Amy Leonard and Penny visiting this event:
 
  this should be a funny sketch  here are some things to make fun of:
 
-  when presented with previous years submissions for the project Sheldon 
-  is very unimpressed by the results and he  argue that the wasp   money should be spent on his research instead
-
- Nvidia made the presentation of their new gpus and of their new expensive Cloud solution 
- Leonard makes fun of it by saying that's how they solve the problem of it works 
- on my system by making sure that everybody uses their system because Leonard is always trouble with the nvidia the drivers
-
- Amy tries to find the positive aspects of the summer school but Sheldon Acts childish and
-  doesn't want to collaborate with others when creating the project
-
- gets frustrated because none of the deep learning and generative models are grounded 
- in true facts in theory but everything is just stochastic exploration  for experimentalists.
-
- in the dome Making Magic film about computer graphics was fascinating but super scary when the dinosaur jumped from the screen
-
-when working on the project make fun of how slow the server are for gesture generation. like it was make by a 5 year old monkey
-
+scenario 1:
+  when presented with previous years submissions for the project Sheldon is very unimpressed by the results and he  argue that the wasp   money should be spent on his research instead
+scenario 2:
+ Nvidia made the presentation of their new gpus and of their new expensive Cloud solution Leonard makes fun of it by saying that's how they solve the problem of it works on my system by making sure that everybody uses their system because Leonard is always trouble with the nvidia the drivers
+scenario 3:
+  Amy tries to find the positive aspects of the summer school but Sheldon Acts childish and doesn't want to collaborate with others when creating the project
+scenario 4:
+  gets frustrated because none of the deep learning and generative models are grounded in true facts in theory but everything is just stochastic exploration  for experimentalists.
+scenario 5:
+  in the dome Making Magic film about computer graphics was fascinating but super scary when the dinosaur jumped from the screen
+scenario 6:
+  when working on the project make fun of how slow the server are for gesture generation. like it was make by a 5 year old monkey
+scenario 7:
+  at the final presentation they do not rank and present any winner but Sheldon holds a funny speech way he is submission was obliviously best  
+end of scenarios
 this is the agenda for the event:
 
 WARA Media & Language welcomes you to an exciting week of Summer School!
@@ -126,7 +124,8 @@ The WARA M&L team will stay at ELITE GRAND HOTEL, NORRKÖPING
 
 Hope to see you there!
 
-create a sketch with approximately 100 lines and 5 scenarios 
+create a sketch with approximately 5 to 10 lines per scenario 
+feel free to fill out with other character specific jokes if needed to make the dialog longer
 
 encode a sentiment for each line chose from:
 Agreement, Angry, Disagreement, Distracted, Flirty, Happy, Laughing, Neutral, Old, Pensive, Relaxed, Sad, Sarcastic, Scared, Sneaky, Speech, Still, Threatening, Tired 

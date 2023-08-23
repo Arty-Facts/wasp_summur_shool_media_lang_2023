@@ -18,6 +18,28 @@ from tortoise.utils.audio import load_voices, load_audio
 import gdown
 from moviepy.editor import VideoFileClip, concatenate_videoclips
 
+style_to_pose = {
+    "Agreement": "pose_11",
+    "Angry": "pose_3",
+    "Disagreement": "pose_4",
+    "Distracted": "pose_8",
+    "Flirty": "pose_1",
+    "Happy": "pose_2",
+    "Laughing": "pose_2",
+    "Neutral": "pose_6",
+    "Old": "pose_12",
+    "Pensive": "pose_0",
+    "Relaxed": "pose_5",
+    "Sad": "pose_7",
+    "Sarcastic": "pose_3",
+    "Scared": "pose_8",
+    "Sneaky": "pose_12",
+    "Speech": "pose_0",
+    "Still": "pose_14",
+    "Threatening": "pose_10",
+    "Tired": "pose_13",
+}
+
 
 @cache
 def load_tts(use_deepspeed = True,
@@ -117,8 +139,7 @@ def dispatch_generate_bvh(
         style="Neutral", 
         base_url='http://129.192.81.237', 
         seed=1337,
-        temperature=0.9,
-        pose="pose_14",
+        temperature=0.5,
     ):
     # The URL to make the POST request to
     url = f'{base_url}/generate_bvh/'
@@ -133,7 +154,7 @@ def dispatch_generate_bvh(
         'audio': (name, data,  'audio/wav'), 
     }
     data = {
-        'pose': pose,
+        'pose': style_to_pose[style],
         'style': style,
         'temperature': f'{temperature}',
         'seed': f'{seed}'

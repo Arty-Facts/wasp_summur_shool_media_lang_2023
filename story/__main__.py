@@ -56,12 +56,6 @@ def main():
         # w.join()
         w.save_mp4()
 
-    #combine all wavs
-    print("Combining all wavs...")
-    all_wav = [worker.get_wav() for worker in all_workers]
-    full_audio = torch.cat(all_wav, dim=-1)
-    torchaudio.save(os.path.join(args.output_path, f"{args.output_name}.wav"), full_audio, 24000)
-    
     #combine all mp4s
     print("Combining all mp4s...")
     all_mp4s = [ w.mp4_path for w in all_workers]

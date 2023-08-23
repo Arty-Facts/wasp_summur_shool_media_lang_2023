@@ -12,6 +12,7 @@ from pathlib import Path
 import time
 import threading
 import logging
+import zipfile
 
 from tortoise.api import TextToSpeech, MODELS_DIR
 from tortoise.utils.audio import load_voices, load_audio
@@ -395,4 +396,30 @@ class Worker:
     
     def get_wav(self):
         return self.wav
+
+
+def zip_story(path, exts, alias=None):
+    # List of files to be included in the ZIP archive
+    files = []
+    for ext in exts:
+        files.extend(glob.glob(f"{path}/*.{ext}"))
+
+    # Name of the output ZIP file
+    output_zip = f'{path}/story.zip'
+
+    # Open the output ZIP file in write mode
+    with zipfile.ZipFile(output_zip, 'w') as zipf:
+        for original_file in files:
+            # Add each file to the ZIP archive with a new name
+            name = Path(original_file).stem.split('_')[-1]
+            new_file = original_file
+            if alias is not None:
+                if name in alias:
+                    new_file = original_file.replace(name, alias[name])
+            zipf.write(original_file, arcname=new_file)
+
+    print(f'ZIP archive "{output_zip}" created successfully.')
+
+    return output_zip
+
 

@@ -51,8 +51,7 @@ def load_tts(use_deepspeed = True,
             ):
     if torch.backends.mps.is_available():
         use_deepspeed = False
-    get_data = len(glob.glob("tortoise-tts/tortoise/voices/arty/*")) == 0
-    if get_data and load_custom_voices:
+    if load_custom_voices:
         url = "https://drive.google.com/drive/folders/1wwi2ZiIdvVEYjkTbMpJv09WiIkTpogXh"
         out = "tortoise-tts/tortoise/"
         gdown.download_folder(url, output=out, quiet=False)

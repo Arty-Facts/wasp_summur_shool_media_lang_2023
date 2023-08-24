@@ -1,0 +1,197 @@
+[
+    {
+    "scenario": "At WASP summer school. A presentation of previous year's submissions is shown.",
+    "dialogue": [
+        {
+        "character": "Sheldon",
+        "sentiment": "Disagreement",
+        "line": "This is appalling! They actually spent research funding on this?"
+        },
+        {
+        "character": "Amy",
+        "sentiment": "Neutral",
+        "line": "Well, they were exploring generative models, Sheldon. Isn't that interesting?"
+        },
+        {
+        "character": "Sheldon",
+        "sentiment": "Angry",
+        "line": "Interesting? This can't be the work of PhDs. It's bad, even for a 5-year-old."
+        },
+        {
+        "character": "Leonard",
+        "sentiment": "Sarcastic",
+        "line": "Exploring is a generous term. This is more like aimless wandering."
+        },
+        {
+        "character": "Penny",
+        "sentiment": "Happy",
+        "line": "Maybe they had issues with their drivers. Speaking of which, Nvidia is having a presentation soon."
+        }
+      ]
+    },
+      
+    {
+        "scenario": "Nvidia presents their new cloud solution and GPUs",
+        "dialogue": [
+          {
+            "character": "Leonard",
+            "sentiment": "Sarcastic",
+            "line": "Ah, Nvidia's cloud solutions. That's how they solve the 'It works on my machine' problem. It works on my machine if everybody uses their machine."
+          },
+          {
+            "character": "Sheldon",
+            "sentiment": "Angry",
+            "line": "And let's not forget the cost! It's like they're turning electricity into disappointment."
+          },
+          {
+            "character": "Amy",
+            "sentiment": "Happy",
+            "line": "I think it's innovative. It might even help us in the assignment."
+          },
+          {
+            "character": "Leonard",
+            "sentiment": "Sarcastic",
+            "line": "Good luck getting early access, unless you want to mortgage your house."
+          },
+          {
+            "character": "Sheldon",
+            "sentiment": "Angry",
+            "line": "With those prices, even if you could afford it, all you'd generate is a cloud of buyer's remorse."
+          },
+          {
+            "character": "Penny",
+            "sentiment": "Laughing",
+            "line": "The more you buy the more you save! Guys should stop clouding the issue."
+          }
+        ]
+      },
+      
+      {
+        "scenario": "The group is sitting and working on the group project",
+        "dialogue": [
+          {
+            "character": "Amy",
+            "sentiment": "Happy",
+            "line": "Isn't it nice that we can use Nvidia's cloud for our project?"
+          },
+          {
+            "character": "Sheldon",
+            "sentiment": "Angry",
+            "line": "Nice? I didn't come to a research event to be 'nice.' I came to show my intellectual superiority."
+          },
+          {
+            "character": "Leonard",
+            "sentiment": "Relaxed",
+            "line": "Well, good luck demonstrating that with these snail-paced servers."
+          },
+          {
+            "character": "Penny",
+            "sentiment": "Laughing",
+            "line": "Are the servers also made by a 5-year-old?"
+          },
+          {
+            "character": "Sheldon",
+            "sentiment": "Sarcastic",
+            "line": "No, not a 5-year-old, it's the handiwork of Mr. Windows laptop over there."
+          }
+        ]
+      },      
+      {
+        "scenario": "Frustration over slow servers and ungrounded models",
+        "dialogue": [
+          {
+            "character": "Sheldon",
+            "sentiment": "Angry",
+            "line": "I can't work under these conditions! Slow servers, stochastic models; it's like they're trying to test my patience."
+          },
+          {
+            "character": "Amy",
+            "sentiment": "Pensive",
+            "line": "Well, sometimes experimentation is more about the journey than the destination, Sheldon."
+          },
+          {
+            "character": "Sheldon",
+            "sentiment": "Disagreement",
+            "line": "A journey? I don't recall signing up for a Lewis and Clark expedition through computational irrelevance."
+          },
+          {
+            "character": "Leonard",
+            "sentiment": "Sarcastic",
+            "line": "Right, because who needs actual, grounded theory when you can just roll the dice?"
+          },
+          {
+            "character": "Amy",
+            "sentiment": "Neutral",
+            "line": "Well, Leonard has a point. Sometimes you have to explore before you find what you're looking for."
+          },
+          {
+            "character": "Penny",
+            "sentiment": "Happy",
+            "line": "Speaking of rolling the dice, aren't we supposed to watch a 3D film tonight? Maybe something will finally jump out at us."
+          },
+          {
+            "character": "Leonard",
+            "sentiment": "Relaxed",
+            "line": "A 3D film sounds like a nice break from all this."
+          },
+          {
+            "character": "Penny",
+            "sentiment": "Excited",
+            "line": "I can't wait to see the 3D film 'Making Magic'. It's going to be fun!"
+          },
+          {
+            "character": "Sheldon",
+            "sentiment": "Excited",
+            "line": "I must admit, a 3D visualization of scientific phenomena might offer some solace for today's shortcomings."
+          }
+        ]
+      },
+      
+      {
+        "scenario": "During the final presentation, no winners are announced",
+        "dialogue": [
+          {
+            "character": "Sheldon",
+            "sentiment": "Speech",
+            "line": "Ladies and gentlemen, let's not dance around the issue. Since the organizers have, in their infinite wisdom, decided not to declare a winner, I'd like to offer a suggestion: My project was the best!"
+          },
+          {
+            "character": "Amy",
+            "sentiment": "Neutral",
+            "line": "Sheldon, remember, the essence of this summer school was about collaboration and exploration, not just winning."
+          },
+          {
+            "character": "Sheldon",
+            "sentiment": "Sarcastic",
+            "line": "Ah yes, collaboration. That's academic speak for 'Let others ride on your coattails.'"
+          },
+          {
+            "character": "Leonard",
+            "sentiment": "Laughing",
+            "line": "Collaboration, stochastic models, slow servers... It's been a roller coaster, hasn't it?"
+          },
+          {
+            "character": "Amy",
+            "sentiment": "Reflective",
+            "line": "It's true, we've all had our share of challenges. But that's what makes science interesting."
+          },
+          {
+            "character": "Penny",
+            "sentiment": "Happy",
+            "line": "Well, challenges or not, you guys made it! Congrats on surviving the summer school. Drinks are on me!"
+          },
+          {
+            "character": "Leonard",
+            "sentiment": "Excited",
+            "line": "I never say no to celebratory drinks."
+          },
+          {
+            "character": "Sheldon",
+            "sentiment": "Resigned",
+            "line": "Very well. I suppose a communal celebration is warranted—even if it blurs the lines of individual merit."
+          }
+        ]
+      }
+      
+  ]
+  

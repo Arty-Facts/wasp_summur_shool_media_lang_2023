@@ -12,6 +12,7 @@ from pathlib import Path
 import time
 import threading
 import logging
+import random
 import zipfile
 
 from tortoise.api import TextToSpeech, MODELS_DIR
@@ -67,7 +68,7 @@ def text_to_speech(text,
                    cvvp_amount=0.0, 
                    use_deepspeed=False,
                    kv_cache=True,
-                   half=True,
+                   half=False,
                    model_dir=MODELS_DIR, 
                    load_custom_voices=True,
                    device=None
@@ -138,9 +139,12 @@ def dispatch_generate_bvh(
         wav,
         style="Neutral", 
         base_url='http://129.192.81.237', 
-        seed=1337,
+        seed=None,
         temperature=0.5,
     ):
+    if seed is None:
+        seed = random.randint(0, 2**32-1)
+
     # The URL to make the POST request to
     url = f'{base_url}/generate_bvh/'
 

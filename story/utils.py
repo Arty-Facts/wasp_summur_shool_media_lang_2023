@@ -151,7 +151,9 @@ def dispatch_generate_bvh(
     # Prepare the multipart/form-data payload
     name, data = load_content(wav)
 
-    assert style in  ["Agreement", "Angry", "Disagreement", "Distracted", "Flirty", "Happy", "Laughing", "Neutral", "Old", "Pensive", "Relaxed", "Sad", "Sarcastic", "Scared", "Sneaky", "Speech", "Still", "Threatening", "Tired"]
+    if style not in ["Agreement", "Angry", "Disagreement", "Distracted", "Flirty", "Happy", "Laughing", "Neutral", "Old", "Pensive", "Relaxed", "Sad", "Sarcastic", "Scared", "Sneaky", "Speech", "Still", "Threatening", "Tired"]:
+        logging.error(f"Unknown style {style}")
+        style = "Neutral"
     # todo validate pose
 
     files = {

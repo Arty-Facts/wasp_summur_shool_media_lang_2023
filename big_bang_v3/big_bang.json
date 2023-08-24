@@ -136,12 +136,12 @@
           },
           {
             "character": "Penny",
-            "sentiment": "Excited",
+            "sentiment": "Happy",
             "line": "I can't wait to see the 3D film 'Making Magic'. It's going to be fun!"
           },
           {
             "character": "Sheldon",
-            "sentiment": "Excited",
+            "sentiment": "Happy",
             "line": "I must admit, a 3D visualization of scientific phenomena might offer some solace for today's shortcomings."
           }
         ]
@@ -182,7 +182,7 @@
           },
           {
             "character": "Leonard",
-            "sentiment": "Excited",
+            "sentiment": "Happy",
             "line": "I never say no to celebratory drinks."
           },
           {
